@@ -1,10 +1,25 @@
 import React, {Component} from 'react';
+import Header from './Header';
+import Sidebar from './Sidebar';
+import Graph from './Graph';
+import Transformer from './helpers/Transformer'
+import Data from './helpers/Data'
+
+var data, transformer, nodes, edges
+
+data = Data.getData()
+
+transformer = new Transformer(data);
+nodes = transformer.getNodes()
+edges = transformer.getEdges()
 
 export default class App extends Component {
   render() {
     return (
-      // Add your component markup and other subcomponent references here.
-      <h1>Hello, World!</h1>
+    	<div>
+    		<Header />
+    		<Graph nodes={ nodes } edges={ edges } />
+  		</div>
     );
   }
 }
